@@ -5,9 +5,11 @@ import BlogDetails from "./pages/BlogDetails"
 import blogsData from "./data/Blogs"
 import { useState, useEffect } from "react"
 import CreateBlog from "./pages/CreateBlog"
+import AuthPage from "./pages/AuthPage"
 
 function App() {
-  const [blogs, setBlogs] = useState([]); // Start with empty state
+  const [blogs, setBlogs] = useState([]); 
+  console.log(blogs)
 
   useEffect(() => {
     const storedBlogs = JSON.parse(localStorage.getItem("blogs"));
@@ -34,8 +36,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home blogs={blogs} />} />
-        <Route path="/blog/:id" element={<BlogDetails blogs={blogs} />} />
+        <Route path="/blog/:id" element={<BlogDetails blogs={blogs} setBlogs={setBlogs} />} />
         <Route path="/create" element={<CreateBlog setBlogs={setBlogs} />} />
+        <Route path="/signup" element={<AuthPage />} />
       </Routes>
     </>
 

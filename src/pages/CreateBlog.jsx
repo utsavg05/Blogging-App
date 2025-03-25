@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import blogsData from '../data/Blogs'
-
 
 const CreateBlog = ({ setBlogs }) => {
   const [newBlog, setNewBlog] = useState({
@@ -20,8 +18,24 @@ const CreateBlog = ({ setBlogs }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const blogWithId = { ...newBlog, id: blogsData.length + 1, date: new Date().toDateString() };
-    setBlogs((prevBlogs) => [...prevBlogs, blogWithId]);
+    alert("🎉 Congrats, your blog is published!🚀 Keep writing and inspiring others!")
+
+    const blogWithId = { 
+        ...newBlog, 
+        id: Date.now(), // Unique ID based on timestamp
+        date: new Date().toDateString()
+      };
+      
+
+    setBlogs((prevBlogs) => {
+      const updatedBlogs = [...prevBlogs, blogWithId];
+
+      // ✅ Update localStorage with new blogs
+      localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+
+      return updatedBlogs;
+    });
+
     navigate("/");
   };
 
@@ -92,3 +106,4 @@ const CreateBlog = ({ setBlogs }) => {
 };
 
 export default CreateBlog;
+
