@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
   const [isSignup, setIsSignup] = useState(false);
+  const navigate = useNavigate()
 
   const toggleAuthMode = () => {
-    setIsSignup(!isSignup);
+    setIsSignup(!isSignup)
+    navigate("/")
+    alert("Login successful! 🎊")
   };
 
   return (
@@ -37,6 +40,7 @@ const AuthPage = () => {
           />
 
           <button
+            onClick={toggleAuthMode}
             type="submit"
             className="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-500 transition-all"
           >
