@@ -5,7 +5,7 @@ import BlogCard from '../components/BlogCard'
 const Home = ({ blogs }) => {
     return (
         <div className='w-full min-h-screen'>
-            <div className='w-full h-screen bg-[#252F9C] text-center flex flex-col py-12 md:py-18'>
+            <div className='w-full h-[90vh] md:h-screen bg-[#252F9C] text-center flex flex-col py-15 md:py-18'>
                 <h1 className='text-white text-4xl md:text-6xl font-normal tracking-tighter'>
                     Welcome to <span className='text-[#B1D0FD] text-6xl md:text-7xl font-bold tracking-tighter'><b>BeBlogger</b></span>
                 </h1>
